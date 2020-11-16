@@ -33,9 +33,9 @@ let corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("/api/users", userRoute);
-require("./routes/companyRoute")(app);
-require("./routes/productRoute")(app);
+app.use("/api/buyers", userRoute);
+// require("./routes/companyRoute")(app);
+// require("./routes/productRoute")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
