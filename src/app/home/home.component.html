@@ -1,4 +1,63 @@
 <div *ngIf="notify" class="alert alert-success container marge">
   {{ notify }}
 </div>
-<p class="container">home page!</p>
+<ng-container *ngIf="!auth.isAuthenticated()">
+  <div class="container">
+    <div class="jumbotron">
+      <h3>Welcome to the Bazar & Suuk</h3>
+      <h5>The most popular ecommerce site</h5>
+      <h6>Please login to continue</h6>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="auth.isAuthenticated()">
+  <div class="container">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-4">
+          <form [formGroup]="brandRef">
+            <select name="" id="brand" class="custom-select">
+              <option selected>All</option>
+              <option
+                *ngFor="let company of companies"
+                formControlName="cname"
+                value="company.name"
+              >
+                {{ company.name }}
+              </option>
+            </select>
+          </form>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div
+              *ngFor="let product of products"
+              class="card col"
+              style="border: 0px"
+            >
+              <div class="shadow">
+                <img
+                  src="../../assets/images/{{ product.image }}"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="card-body justify-content-center">
+                <span class="card-title">{{ product.name }}</span>
+                <p>{{ product.details }}</p>
+                <div class="col">{{ product.price }}</div>
+                <div class="col">
+                  <a [routerLink]="['/card', { id: id }]"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<!-- <div> -->
+<!-- <app-product></app-product> -->
+<!-- <router-outlet></router-outlet> -->
+<!-- </div> -->

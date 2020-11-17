@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { Product } from './product';
+import { Product } from './productOrg';
 
 @Injectable()
-export class ProductService {
+export class ProductServiceOrg {
   private products: Product[];
 
   constructor() {
