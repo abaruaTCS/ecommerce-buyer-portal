@@ -3,7 +3,7 @@ module.exports = function (app) {
 
   app.get("/api/companies", companies.findAll);
 
-  // app.get("/api/companies/:id", companies.findById);
+  app.get("/api/companies/:id", companies.findById);
 
   // app.post("/api/companies", companies.addCompany);
 

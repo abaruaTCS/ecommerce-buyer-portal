@@ -1,4 +1,4 @@
-import { Product } from './productOrg';
+import { Product } from './product';
 
 export class Item {
   constructor(public product: Product, public quantity: number) {} //reference of product and reference of quantity. product in a complex property comprised of multiple properties.

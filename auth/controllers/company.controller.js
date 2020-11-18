@@ -12,12 +12,12 @@ exports.findAll = (req, res) => {
     });
 };
 
-// exports.findById = (req, res) => {
-//   Company.findById(req.params.id, (err, company) => {
-//     if (err) throw err;
-//     res.send(company);
-//   });
-// };
+exports.findById = (req, res) => {
+  Company.findById(req.params.id, (err, company) => {
+    if (err) throw err;
+    res.send(company);
+  });
+};
 
 // exports.addCompany = (req, res) => {
 //   Company.create(req.body, (err, data) => {

@@ -3,9 +3,9 @@ module.exports = function (app) {
 
   app.get("/api/products", products.findAll);
 
-  app.get("/api/products/:name", products.findByName);
-
   app.get("/api/products/:id", products.findById);
+
+  // app.get("/api/products/:name", products.findOne);
 
   // app.post("/api/products", products.addProduct);
 

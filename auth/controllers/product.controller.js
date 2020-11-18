@@ -12,12 +12,12 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.findByName = (req, res) => {
-  Product.findOne({ name: req.params.name }, (err, product) => {
-    if (err) throw err;
-    res.send(product);
-  });
-};
+// exports.findOne = (req, res) => {
+//   Product.findOne({ company: req.params.name }, (err, product) => {
+//     if (err) throw err;
+//     res.send(product);
+//   });
+// };
 
 exports.findById = (req, res) => {
   Product.findById(req.params.id, (err, product) => {

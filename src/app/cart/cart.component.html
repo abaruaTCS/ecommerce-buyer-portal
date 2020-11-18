@@ -1,33 +1,59 @@
-<h3>Cart Info</h3>
-<table border="1">
-    <tr>
-        <th>Option</th>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Photo</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Sub Total</th>
-    </tr>
-    <tr *ngFor="let item of items">
-        <td align="center">
-            <a (click)="remove(item.product.id)">&#10060;</a>
-        </td>
-        <td>{{item.product.id}}</td>
-        <td>{{item.product.name}}</td>
-        <td>
-            <img src="assets/images/{{item.product.photo}}" width="250" height="100">
-        </td>
-        <td>{{item.product.price}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.product.price * item.quantity}}</td>
-    </tr>
-    <tr>
-        <td colspan="6" align="right">Total</td>
-        <td>{{total}}</td>
-    </tr>
-</table>
-
-<input type="button" value="checkOut" (click)="checkOut()"/>
-
-{{cartInfo}}
+<div class="container">
+  <div class="col-12">
+    <div *ngIf="flg" class="col-9">
+      <!-- <div *ngFor="let item of items">
+        <div>{{ item.product.name }}</div>
+      </div> -->
+      <div *ngFor="let item of items" class="card col" style="border: 0px">
+        <div class="shadow">
+          <img
+            src="../../assets/images/{{ item.product.image }}"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="card-body justify-content-center">
+          <span class="card-title">{{ item.product.name }}</span>
+          <p>{{ item.product.details }}</p>
+          <div>{{ item.product.price }}</div>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="remove(item.product._id)"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="flg" class="col-3">
+      <ul>
+        <li *ngFor="let item of items">
+          {{ item.product.name }}&nbsp;&nbsp;&nbsp;{{ item.product.price }}
+        </li>
+      </ul>
+      <div>Total&nbsp;&nbsp;&nbsp;{{ total }}</div>
+      <a [routerLink]="['/home']">Continue Shopping</a>
+      <button type="button" class="btn btn-secondary" (click)="checkout()">
+        Check Out
+      </button>
+    </div>
+    <div *ngIf="!flg">
+      <h2>Check Out Products</h2>
+      <label for="">Name</label><br /><br />
+      <input type="text" /><br /><br />
+      <label for="">Street Address</label><br /><br />
+      <input type="text" name="" id="" /><br /><br />
+      <label for="">Country</label><br /><br />
+      <select name="" id="">
+        <option value="" selected>Choose...</option>
+        <option value="">United States</option>
+        <option value="">Mexico</option>
+        <option value="">Guatemala</option>
+      </select>
+      <label for="">Zip</label><br /><br />
+      <input type="text" name="" id="" /><br /><br />
+      <input type="submit" value="Place Order" />
+    </div>
+  </div>
+</div>
