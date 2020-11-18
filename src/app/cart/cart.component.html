@@ -1,21 +1,15 @@
 <div class="container">
-  <div class="col-12">
-    <div *ngIf="flg" class="col-9">
-      <!-- <div *ngFor="let item of items">
-        <div>{{ item.product.name }}</div>
-      </div> -->
-      <div *ngFor="let item of items" class="card col" style="border: 0px">
+  <div class="row">
+    <div *ngIf="flg" class="col-7 justify-content-center">
+      <div *ngFor="let item of items">
         <div class="shadow">
-          <img
-            src="../../assets/images/{{ item.product.image }}"
-            alt=""
-            srcset=""
-          />
+          <img src="../../assets/{{ item.product.image }}" alt="" srcset="" />
         </div>
         <div class="card-body justify-content-center">
           <span class="card-title">{{ item.product.name }}</span>
-          <p>{{ item.product.details }}</p>
-          <div>{{ item.product.price }}</div>
+          <p>Item Description: {{ item.product.details }}</p>
+          <div>Price: {{ item.product.price }}</div>
+          <br />
           <button
             type="button"
             class="btn btn-secondary"
@@ -25,20 +19,24 @@
           </button>
         </div>
       </div>
-    </div>
-    <div *ngIf="flg" class="col-3">
-      <ul>
-        <li *ngFor="let item of items">
-          {{ item.product.name }}&nbsp;&nbsp;&nbsp;{{ item.product.price }}
-        </li>
-      </ul>
-      <div>Total&nbsp;&nbsp;&nbsp;{{ total }}</div>
-      <a [routerLink]="['/home']">Continue Shopping</a>
+      <a [routerLink]="['/home']">Continue Shopping</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <button type="button" class="btn btn-secondary" (click)="checkout()">
         Check Out
       </button>
     </div>
-    <div *ngIf="!flg">
+    <div *ngIf="flg" class="col-5 justify-content-center">
+      <ul>
+        <li *ngFor="let item of items">
+          {{ item.product.name }}&nbsp;&nbsp;&nbsp;&nbsp;{{
+            item.product.price
+          }}
+        </li>
+      </ul>
+      <div>Total&nbsp;&nbsp;&nbsp;{{ total }}</div>
+    </div>
+  </div>
+  <div *ngIf="!flg">
+    <div class="jumbotron">
       <h2>Check Out Products</h2>
       <label for="">Name</label><br /><br />
       <input type="text" /><br /><br />
@@ -49,11 +47,12 @@
         <option value="" selected>Choose...</option>
         <option value="">United States</option>
         <option value="">Mexico</option>
-        <option value="">Guatemala</option>
-      </select>
+        <option value="">Guatemala</option></select
+      ><br /><br />
       <label for="">Zip</label><br /><br />
       <input type="text" name="" id="" /><br /><br />
       <input type="submit" value="Place Order" />
     </div>
+    <a [routerLink]="['/home']">Continue Shopping</a>
   </div>
 </div>

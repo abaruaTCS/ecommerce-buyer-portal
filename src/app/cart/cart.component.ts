@@ -45,71 +45,75 @@ export class CartComponent implements OnInit {
       this.product.price = this.price;
       this.product.details = this.details;
 
-      if (localStorage.getItem('cart') == null) {
-        var item: Item = {
-          product: this.product,
-          quantity: 1,
-        };
-        let cart: any = [];
-        cart.push(JSON.stringify(item));
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // this.items.push(item);
-        // this.total = eval(this.product.price);
-        // test point 1
-        // check to see if it triggers when starting with and empty array
-        // should have only one item in the array
-        // only occur once
-        console.log('test point 1');
-        console.log(JSON.parse(localStorage.getItem('cart')));
-        // console.log(this.total);
-      } else {
-        let cart: any = JSON.parse(localStorage.getItem('cart'));
-        var idx = -1;
-        // var flag = true;
-        for (var i = 0; i < cart.length; i++) {
-          let item: Item = JSON.parse(cart[i]);
-          if (item.product._id == this.id) {
-            idx = i;
-            // flag = false;
-            break;
-          }
-        }
-        if (idx < 0) {
+      if (this.id) {
+        if (localStorage.getItem('cart') == null) {
           var item: Item = {
             product: this.product,
             quantity: 1,
           };
+          let cart: any = [];
           cart.push(JSON.stringify(item));
           localStorage.setItem('cart', JSON.stringify(cart));
+
           // this.items.push(item);
-          // this.total += eval(this.product.price);
-          // test point 2
-          // didn't find a matchin product in the items list
-          // size of the array should increase
-          // total should increase
-          // happens multiple times
-          console.log('test point 2');
+          // this.total = eval(this.product.price);
+          // test point 1
+          // check to see if it triggers when starting with and empty array
+          // should have only one item in the array
+          // only occur once
+          console.log('test point 1');
           console.log(JSON.parse(localStorage.getItem('cart')));
           // console.log(this.total);
         } else {
-          let item: Item = JSON.parse(cart[idx]);
-          item.quantity += 1;
-          cart[idx] = JSON.stringify(item);
-          localStorage.setItem('cart', JSON.stringify(cart));
-          // this.items[idx].quantity += 1;
-          // this.total += eval(this.items[idx].product.price);
-          // test point 3
-          // size of the items list does not increase
-          // quantity increases
-          // total should increase
-          // happens multiple times
-          console.log('test point 3');
-          console.log(JSON.parse(localStorage.getItem('cart')));
-          // console.log(this.total);
+          let cart: any = JSON.parse(localStorage.getItem('cart'));
+          var idx = -1;
+          // var flag = true;
+          for (var i = 0; i < cart.length; i++) {
+            let item: Item = JSON.parse(cart[i]);
+            if (item.product._id == this.id) {
+              idx = i;
+              // flag = false;
+              break;
+            }
+          }
+          if (idx < 0) {
+            var item: Item = {
+              product: this.product,
+              quantity: 1,
+            };
+            cart.push(JSON.stringify(item));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            // this.items.push(item);
+            // this.total += eval(this.product.price);
+            // test point 2
+            // didn't find a matchin product in the items list
+            // size of the array should increase
+            // total should increase
+            // happens multiple times
+            console.log('test point 2');
+            console.log(JSON.parse(localStorage.getItem('cart')));
+            // console.log(this.total);
+          } else {
+            let item: Item = JSON.parse(cart[idx]);
+            item.quantity += 1;
+            cart[idx] = JSON.stringify(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            // this.items[idx].quantity += 1;
+            // this.total += eval(this.items[idx].product.price);
+            // test point 3
+            // size of the items list does not increase
+            // quantity increases
+            // total should increase
+            // happens multiple times
+            console.log('test point 3');
+            console.log(JSON.parse(localStorage.getItem('cart')));
+            // console.log(this.total);
+          }
         }
+        this.loadCart();
+      } else {
+        this.loadCart();
       }
-      this.loadCart();
     });
   }
 
@@ -131,7 +135,7 @@ export class CartComponent implements OnInit {
   remove(id: string): void {
     let cart: any = JSON.parse(localStorage.getItem('cart'));
     var idx = -1;
-    for (var i = 0; i < this.items.length; i++) {
+    for (var i = 0; i < cart.length; i++) {
       let item: Item = JSON.parse(cart[i]);
       if (item.product._id == id) {
         cart.splice(i, 1);
@@ -139,6 +143,7 @@ export class CartComponent implements OnInit {
         // idx = i;
       }
     }
+
     localStorage.setItem('cart', JSON.stringify(cart));
     // if (idx > -1) {
     //   this.total -= eval(this.items[i].product.price);
@@ -159,7 +164,8 @@ export class CartComponent implements OnInit {
     // let cart: any = JSON.parse(localStorage.getItem('cart'));
     let cart: any = [];
     localStorage.setItem('cart', JSON.stringify(cart));
-    this.items.length;
+
+    this.items = [];
     this.total = 0;
     // test point 5
     // size of the items list should be zero

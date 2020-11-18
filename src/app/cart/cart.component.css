@@ -1,3 +1,13 @@
 .container {
   margin-top: 2em;
 }
+
+img {
+  width: 65%;
+  height: auto;
+}
+
+.shadow {
+  text-align: center;
+  width: 50%;
+}
