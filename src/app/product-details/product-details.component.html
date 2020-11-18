@@ -1,15 +1,20 @@
 <div class="container">
-  <div class="col-12">
-    <div class="row">
-      <div class="col-4">
-        <img src="" alt="" />
-        <div>Product Price &nbsp;&nbsp;&nbsp; {{ price }}</div>
-        <div>Product Seller &nbsp;&nbsp;&nbsp; {{ company }}</div>
-      </div>
-      <div class="col-8">
-        <h4>Product Details</h4>
-        <div>Product Name &nbsp;&nbsp;&nbsp; {{ name }}</div>
-        <div>Product Description &nbsp;&nbsp;&nbsp; {{ details }}</div>
+  <div class="jumbotron">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-4">
+          <img src="../../assets/{{ image }}" alt="" /><br /><br />
+          <div>Product Price &nbsp;&nbsp;&nbsp; {{ price }}</div>
+          <br />
+          <div>Product Seller &nbsp;&nbsp;&nbsp; {{ company }}</div>
+          <br />
+          <a [routerLink]="['/home']" id="back">Go Back</a>
+        </div>
+        <div class="col-6 offset-2 justify-content-center">
+          <div><h4>Product Details</h4></div>
+          <div>Product Name &nbsp;&nbsp;&nbsp; {{ name }}</div>
+          <div>Product Description &nbsp;&nbsp;&nbsp; {{ details }}</div>
+        </div>
       </div>
     </div>
   </div>

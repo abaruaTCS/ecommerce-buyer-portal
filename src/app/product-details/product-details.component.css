@@ -1,0 +1,14 @@
+.continer {
+  margin-top: 2em;
+}
+
+.jumbotron {
+  margin: 2em;
+  border-radius: 10px;
+}
+
+img {
+  width: auto;
+  height: 50%;
+  border-radius: 6px;
+}

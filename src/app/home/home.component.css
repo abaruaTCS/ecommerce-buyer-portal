@@ -1,3 +1,16 @@
 .marge {
   margin-top: 1%;
 }
+
+.content {
+  margin-top: 2em;
+}
+
+img {
+  width: 50%;
+  height: auto;
+}
+
+.shadow {
+  text-align: center;
+}

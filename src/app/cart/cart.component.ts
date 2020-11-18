@@ -156,8 +156,10 @@ export class CartComponent implements OnInit {
 
   checkout(): void {
     this.flg = false;
-    let cart: any = JSON.parse(localStorage.getItem('cart'));
-    this.items = [];
+    // let cart: any = JSON.parse(localStorage.getItem('cart'));
+    let cart: any = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    this.items.length;
     this.total = 0;
     // test point 5
     // size of the items list should be zero
